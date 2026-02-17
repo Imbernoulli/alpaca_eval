@@ -1,0 +1,13 @@
+deepseek_chat:
+  prompt_template: "alpaca_eval_clf_cot_gpt4_turbo/alpaca_eval_clf_cot.txt"
+  fn_completions: "openai_completions"
+  completions_kwargs:
+    model_name: "deepseek-chat"
+    max_tokens: 1000
+    temperature: 0
+    client_config_path: "client_configs/deepseek_configs.yaml"
+  completion_parser_kwargs:
+    outputs_to_match:
+      1: '(?<!\w)m\s*$'
+      2: '(?<!\w)M\s*$'
+  batch_size: 1

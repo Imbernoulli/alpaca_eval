@@ -541,6 +541,17 @@ def get_all_clients(
         with open(client_config_path) as f:
             all_client_configs = yaml.safe_load(f)
 
+        def _expand_env_vars(obj):
+            if isinstance(obj, str):
+                return re.sub(r"\$\{(\w+)\}", lambda m: os.environ.get(m.group(1), m.group(0)), obj)
+            elif isinstance(obj, dict):
+                return {k: _expand_env_vars(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [_expand_env_vars(v) for v in obj]
+            return obj
+
+        all_client_configs = _expand_env_vars(all_client_configs)
+
         client_configs = []
 
         if model_name in all_client_configs:

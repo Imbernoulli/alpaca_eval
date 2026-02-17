@@ -31,6 +31,10 @@ GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", None)
 
 COHERE_API_KEY = os.environ.get("COHERE_API_KEY", None)
 
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", None)
+DEEPSEEK_MAX_CONCURRENCY = int(os.environ.get("DEEPSEEK_MAX_CONCURRENCY", 5))
+DEEPSEEK_CLIENT_CONFIG_PATH = os.environ.get("DEEPSEEK_CLIENT_CONFIG_PATH", BASE_DIR / "client_configs/deepseek_configs.yaml")
+
 DATASETS_TOKEN = os.environ.get("DATASETS_TOKEN", None)
 HUGGINGFACEHUB_API_TOKEN = os.environ.get("HUGGINGFACEHUB_API_TOKEN", None)
 DATASETS_FORCE_DOWNLOAD = os.environ.get("DATASETS_FORCE_DOWNLOAD", False)
